@@ -48,27 +48,40 @@ data.header.row <- here('data', 'pas2_header_file.csv') %>%
 comm.can.data <- here('data', 'comm-can-2020.txt') %>%
   read_delim(delim = '|', guess_max = 250000,
              col_names = data.header.row) %>%
-  select(row.id = SUB_ID, comm.id = CMTE_ID, 
-         ammend.ind = AMNDT_IND, report.type = RPT_TP, 
+  select(row.id = SUB_ID, donor.id = CMTE_ID, 
+         ammend.ind = AMNDT_IND, 
          prim.gen.ind = TRANSACTION_PGI,
          trans.type = TRANSACTION_TP, entity.type = ENTITY_TP,
-         name = NAME, city = CITY, state = STATE,
-         zip = ZIP_CODE, employer = EMPLOYER,
-         occupation = OCCUPATION,
+         donee.cm.id = OTHER_ID, 
+         #donee.can.id = CAND_ID,
+         donee.name = NAME, donee.city = CITY, 
+         donee.state = STATE, donee.zip = ZIP_CODE, 
          trans.date = TRANSACTION_DT,
          trans.amount = TRANSACTION_AMT,
-         other.id = OTHER_ID, can.id = CAND_ID,
          memo.code = MEMO_CD, memo.text = MEMO_TEXT)
 
 rm(list = c('cm.header.row', 'data.header.row', 
             'can.header.row'))
 
 comm.can.data %>% 
-  left_join(select(cm.master.list, comm.id, 
-                   comm.name, comm.party, comm.type),
-            by = 'comm.id') %>%
-  left_join(select(can.master.list, can.id, can.name, can.party,
-                   can.el.year, can.office.state, can.office, 
+  left_join(select(cm.master.list, donor.id = comm.id, 
+                   donor.comm.name = comm.name, 
+                   donor.comm.party = comm.party, 
+                   donor.comm.type = comm.type),
+            by = 'donor.id') %>% 
+  left_join(select(cm.master.list, donee.cm.id = comm.id,
+                   donee.can.id = cand.id), 
+            by = 'donee.cm.id')
+  left_join(select(can.master.list, donee.can.id = can.id, can.name, 
+                   donee.can.party = can.party, can.el.year,
+                   can.office.state, can.office, 
                    can.office.district, can.incumb.flag,
-                   can.pcc), by = 'can.id')
+                   can.pcc), by = 'donee.can.id') %>%
+  select(row.id, trans.date, trans.amount, 
+         prim.gen.ind, can.el.year, can.office.state, 
+         can.office, can.office.district, can.incumb.flag,
+         donor.id, donor.comm.name, donor.comm.party,
+         donor.comm.type, donee.cm.id, 
+         donee.can.id, donee.name, donee.city,
+         donee.state, donee.zip) %>% View
 

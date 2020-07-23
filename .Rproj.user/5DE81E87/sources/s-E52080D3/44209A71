@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1595467800390.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "44209A71",
+    "lastKnownWriteTime" : 8389754676516450921,
+    "last_content_update" : 1595467800390,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "3B1A1502",
+        "caption" : "can.master.list",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=can.master.list&cache_key=3B1A1502",
+        "displayedObservations" : 7132,
+        "environment" : "",
+        "expression" : "can.master.list",
+        "object" : "can.master.list",
+        "preview" : 0,
+        "totalObservations" : 7132,
+        "variables" : 14
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
