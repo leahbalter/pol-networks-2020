@@ -12,16 +12,17 @@
     "path" : null,
     "project_path" : null,
     "properties" : {
-        "cacheKey" : "90521C9B",
+        "cacheKey" : "CE73379A",
         "caption" : ".",
-        "contentUrl" : "grid_resource/gridviewer.html?env=_rs_no_env&obj=.&cache_key=90521C9B",
-        "displayedObservations" : "16861",
+        "contentUrl" : "grid_resource/gridviewer.html?env=_rs_no_env&obj=.&cache_key=CE73379A",
+        "displayedObservations" : "181253",
         "environment" : "_rs_no_env",
         "expression" : ".",
         "object" : ".",
         "preview" : "0",
-        "totalObservations" : "16861",
-        "variables" : "19"
+        "source_window_id" : "w4g446vi3fyyt",
+        "totalObservations" : "181253",
+        "variables" : "27"
     },
     "read_only" : false,
     "read_only_alternatives" : [
